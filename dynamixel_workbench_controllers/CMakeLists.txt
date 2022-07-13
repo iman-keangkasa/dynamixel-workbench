@@ -75,6 +75,10 @@ add_executable(dynamixel_workbench_controllers src/dynamixel_workbench_controlle
 add_dependencies(dynamixel_workbench_controllers ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(dynamixel_workbench_controllers ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${YAML_CPP_LIBRARIES})
 
+add_executable(dynamixel_workbench_controllers2 src/dynamixel_workbench_controllers2.cpp src/trajectory_generator.cpp)
+add_dependencies(dynamixel_workbench_controllers2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(dynamixel_workbench_controllers2 ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${YAML_CPP_LIBRARIES})
+
 add_executable(find_dynamixel src/find_dynamixel.cpp)
 add_dependencies(find_dynamixel ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(find_dynamixel ${catkin_LIBRARIES})
