@@ -16,7 +16,7 @@
 
 /* Authors: Taehun Lim (Darby) */
 
-#include "dynamixel_workbench_controllers/dynamixel_workbench_controllers2.h"
+#include "dynamixel_workbench_controllers/dynamixel_workbench_controllers3.h"
 
 DynamixelController::DynamixelController()
   :node_handle_(""),
@@ -974,7 +974,7 @@ bool DynamixelController::dynamixelCommandMsgCallback(dynamixel_workbench_msgs::
   return true;
 }
 
-
+/*
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "dynamixel_workbench_controllers");
@@ -1045,7 +1045,7 @@ int main(int argc, char **argv)
   dynamixel_controller.initPublisher();
   dynamixel_controller.initSubscriber();
   dynamixel_controller.initServer();
-  dynamixel_controller.turnTorque(true);
+
   ros::Timer read_timer = node_handle.createTimer(ros::Duration(dynamixel_controller.getReadPeriod()), &DynamixelController::readCallback, &dynamixel_controller);
   ros::Timer write_timer = node_handle.createTimer(ros::Duration(dynamixel_controller.getWritePeriod()), &DynamixelController::writeCallback, &dynamixel_controller);
   ros::Timer publish_timer = node_handle.createTimer(ros::Duration(dynamixel_controller.getPublishPeriod()), &DynamixelController::publishCallback, &dynamixel_controller);
@@ -1054,4 +1054,4 @@ int main(int argc, char **argv)
 
   return 0;
 }
-
+*/

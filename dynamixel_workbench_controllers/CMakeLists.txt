@@ -71,6 +71,10 @@ include_directories(
   ${YAML_CPP_INCLUDE_DIRS}
 )
 
+add_library(r_mini src/dynamixel_workbench_controllers3.cpp)
+#add_dependencies(r_mini ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#target_link_libraries(r_mini ${catkin_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${YAML_CPP_LIBRARIES})
+
 add_executable(dynamixel_workbench_controllers src/dynamixel_workbench_controllers.cpp src/trajectory_generator.cpp)
 add_dependencies(dynamixel_workbench_controllers ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(dynamixel_workbench_controllers ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${YAML_CPP_LIBRARIES})
@@ -79,6 +83,10 @@ add_executable(dynamixel_workbench_controllers2 src/dynamixel_workbench_controll
 add_dependencies(dynamixel_workbench_controllers2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(dynamixel_workbench_controllers2 ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${YAML_CPP_LIBRARIES})
 
+add_executable(dynamixel_hw_torque_control_node src/dynamixel_hw_torque_control.cpp src/trajectory_generator.cpp)
+add_dependencies(dynamixel_hw_torque_control_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(dynamixel_hw_torque_control_node r_mini ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${YAML_CPP_LIBRARIES})
+
 add_executable(find_dynamixel src/find_dynamixel.cpp)
 add_dependencies(find_dynamixel ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(find_dynamixel ${catkin_LIBRARIES})
@@ -86,7 +94,7 @@ target_link_libraries(find_dynamixel ${catkin_LIBRARIES})
 #################################################################################
 ## Install
 #################################################################################
-install(TARGETS dynamixel_workbench_controllers find_dynamixel
+install(TARGETS dynamixel_workbench_controllers dynamixel_workbench_controllers2 find_dynamixel
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
