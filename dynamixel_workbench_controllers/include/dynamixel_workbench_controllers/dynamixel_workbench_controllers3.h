@@ -105,6 +105,8 @@ class DynamixelController
   DynamixelController();
   ~DynamixelController();
 
+  double convertVelocity2RPM(double rad_per_sec);
+  double convertAcc2RPM2(double rad_per_sec2);
   void merge_array(int32_t *pos123, int32_t *pos456, int32_t *pos);
   bool initWorkbench(const std::string port_name, const uint32_t baud_rate);
   bool getDynamixelsInfo(const std::string yaml_file);
@@ -123,6 +125,8 @@ class DynamixelController
 
   void initServer();
 
+  void read(void); //[iman] finish the implementation
+  void write(void); //[iman] finish the implementation
   void readCallback(const ros::TimerEvent&);
   void writeCallback(const ros::TimerEvent&);
   void publishCallback(const ros::TimerEvent&);
@@ -131,6 +135,7 @@ class DynamixelController
   void trajectoryMsgCallback(const trajectory_msgs::JointTrajectory::ConstPtr &msg);
   bool dynamixelCommandMsgCallback(dynamixel_workbench_msgs::DynamixelCommand::Request &req,
                                    dynamixel_workbench_msgs::DynamixelCommand::Response &res);
+
 };
 
 #endif //DYNAMIXEL_WORKBENCH_CONTROLLERS_H

@@ -49,6 +49,9 @@ DynamixelController::DynamixelController()
 
 DynamixelController::~DynamixelController(){}
 
+double convertVelocity2RPM(double rad_per_sec) { return rad_per_sec*38.1972; }
+double convertAcc2RPM2(double rad_per_sec2) { return rad_per_sec2*2291.8312; }
+
 void DynamixelController::merge_array(int32_t *pos123, int32_t *pos456, int32_t *pos)
 {
   //ROS_INFO_STREAM("MERGER RESULT: ");
@@ -164,6 +167,8 @@ bool DynamixelController::initDynamixels(void)
             ROS_ERROR("Failed to write value[%d] on items[%s] to Dynamixel[Name : %s, ID : %d]", info.second.value, info.second.item_name.c_str(), dxl.first.c_str(), dxl.second);
             return false;
           }
+          else ROS_INFO("Succeed writing value[%d] on items[%s] to Dynamixel[Name: %s, ID: %d]", info.second.value, info.second.item_name.c_str(), dxl.first.c_str(), dxl.second);
+
         }
       }
     }

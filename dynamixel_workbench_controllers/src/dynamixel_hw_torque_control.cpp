@@ -70,8 +70,8 @@ int main(int argc, char **argv)
   dynamixel_controller.initPublisher();
   dynamixel_controller.initSubscriber();
   dynamixel_controller.initServer();
-  bool turn_off = true;
-  dynamixel_controller.turnTorque(turn_off);
+//  bool turn_off = true;
+//  dynamixel_controller.turnTorque(turn_off);
 
   ros::Timer read_timer = node_handle.createTimer(ros::Duration(dynamixel_controller.getReadPeriod()), &DynamixelController::readCallback, &dynamixel_controller);
   ros::Timer write_timer = node_handle.createTimer(ros::Duration(dynamixel_controller.getWritePeriod()), &DynamixelController::writeCallback, &dynamixel_controller);
